@@ -186,8 +186,10 @@ public partial class TestData
 [For Full Detail](https://github.com/SEH00N/DBBenchmarking/raw/refs/heads/main/Report/Report.xlsx)
 
 #### JSON/Redis
-<img src=".\Report\Statistics\JSON_Redis_0.png" style="height: 225px;"/>
-<img src=".\Report\Statistics\JSON_Redis_1.png" style="height: 225px;"/>
+<div style="display: flex;">
+  <img src=".\Report\Statistics\JSON_Redis_0.png" style="height: 192.25px;"/>
+  <img src=".\Report\Statistics\JSON_Redis_1.png" style="height: 192.25px;"/>
+</div>
 <img src=".\Report\Statistics\JSON_Redis_2.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\JSON_Redis_3.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\JSON_Redis_4.png" style="height: 225px;"/>
@@ -195,8 +197,10 @@ public partial class TestData
 ---
 
 #### MemoryPack/Redis
-<img src=".\Report\Statistics\MemoryPack_Redis_0.png" style="height: 225px;"/>
-<img src=".\Report\Statistics\MemoryPack_Redis_1.png" style="height: 225px;"/>
+<div style="display: flex;">
+  <img src=".\Report\Statistics\MemoryPack_Redis_0.png" style="height: 192.25px;"/>
+  <img src=".\Report\Statistics\MemoryPack_Redis_1.png" style="height: 192.25px;"/>
+</div>
 <img src=".\Report\Statistics\MemoryPack_Redis_2.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\MemoryPack_Redis_3.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\MemoryPack_Redis_4.png" style="height: 225px;"/>
@@ -204,8 +208,10 @@ public partial class TestData
 ---
 
 #### JSON/MySQL
-<img src=".\Report\Statistics\JSON_MySQL_0.png" style="height: 225px;"/>
-<img src=".\Report\Statistics\JSON_MySQL_1.png" style="height: 225px;"/>
+<div style="display: flex;">
+  <img src=".\Report\Statistics\JSON_MySQL_0.png" style="height: 192.25px;"/>
+  <img src=".\Report\Statistics\JSON_MySQL_1.png" style="height: 192.25px;"/>
+</div>
 <img src=".\Report\Statistics\JSON_MySQL_2.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\JSON_MySQL_3.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\JSON_MySQL_4.png" style="height: 225px;"/>
@@ -213,8 +219,10 @@ public partial class TestData
 ---
 
 #### MemoryPack/MySQL
-<img src=".\Report\Statistics\MemoryPack_MySQL_0.png" style="height: 225px;"/>
-<img src=".\Report\Statistics\MemoryPack_MySQL_1.png" style="height: 225px;"/>
+<div style="display: flex;">
+  <img src=".\Report\Statistics\MemoryPack_MySQL_0.png" style="height: 192.25px;"/>
+  <img src=".\Report\Statistics\MemoryPack_MySQL_1.png" style="height: 192.25px;"/>
+</div>
 <img src=".\Report\Statistics\MemoryPack_MySQL_2.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\MemoryPack_MySQL_3.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\MemoryPack_MySQL_4.png" style="height: 225px;"/>
@@ -222,8 +230,10 @@ public partial class TestData
 ---
 
 #### BSON/MongoDB
-<img src=".\Report\Statistics\BSON_MongoDB_0.png" style="height: 225px;"/>
-<img src=".\Report\Statistics\BSON_MongoDB_1.png" style="height: 225px;"/>
+<div style="display: flex;">
+  <img src=".\Report\Statistics\BSON_MongoDB_0.png" style="height: 192.25px;"/>
+  <img src=".\Report\Statistics\BSON_MongoDB_1.png" style="height: 192.25px;"/>
+</div>
 <img src=".\Report\Statistics\BSON_MongoDB_2.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\BSON_MongoDB_3.png" style="height: 225px;"/>
 <img src=".\Report\Statistics\BSON_MongoDB_4.png" style="height: 225px;"/>
