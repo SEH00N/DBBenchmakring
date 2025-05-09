@@ -142,7 +142,7 @@ public partial class TestData
 
 |JSON/Redis                           |MemoryPack/Redis                           |JSON/MySQL                           |MemoryPack/MySQL                           |BSON/MongoDB                           |
 |:-:                                  |:-:                                        |:-:                                  |:-:                                        |:-:                                    |
-|![](.\Report\Colors\JSON_Redis.png)  |![](.\Report\Colors\MemoryPack_Redis.png)  |![](.\Report\Colors\JSON_MySQL.png)  |![](.\Report\Colors\MemoryPack_MySQL.png)  |![](.\Report\Colors\BSON_MongoDB.png)  |
+|![](./Report/Colors/JSON_Redis.png)  |![](./Report/Colors/MemoryPack_Redis.png)  |![](./Report/Colors/JSON_MySQL.png)  |![](./Report/Colors/MemoryPack_MySQL.png)  |![](./Report/Colors/BSON_MongoDB.png)  |
 
 ### Processing Time (avg)
 |Serailize(ms)                                                                  |Deserialize(ms)                                                                |
@@ -183,14 +183,14 @@ public partial class TestData
 
 ### Detail
 
-[JSON/Redis](.\Report\Statistics\JSON_Redis.png)
+[JSON/Redis](./Report/Statistics/JSON_Redis.png)
 
-[MemoryPack/Redis](.\Report\Statistics\MemoryPack_Redis.png)
+[MemoryPack/Redis](./Report/Statistics/MemoryPack_Redis.png)
 
-[JSON/MySQL](.\Report\Statistics\JSON_MySQL.png)
+[JSON/MySQL](./Report/Statistics/JSON_MySQL.png)
 
-[MemoryPack/MySQL](.\Report\Statistics\MemoryPack_MySQL.png)
+[MemoryPack/MySQL](./Report/Statistics/MemoryPack_MySQL.png)
 
-[BSON/MongoDB](.\Report\Statistics\BSON_MongoDB.png)
+[BSON/MongoDB](./Report/Statistics/BSON_MongoDB.png)
 
 </div>
