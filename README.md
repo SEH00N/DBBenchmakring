@@ -183,6 +183,8 @@ public partial class TestData
 
 ### Detail
 
+[Full Detail](./Report/Report.xlsx)
+
 [JSON/Redis](./Report/Statistics/JSON_Redis.png)
 
 [MemoryPack/Redis](./Report/Statistics/MemoryPack_Redis.png)
