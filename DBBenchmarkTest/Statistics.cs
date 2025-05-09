@@ -21,7 +21,7 @@ public static class Statistics
     {
         stopwatch.Stop();
         
-        string dirPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Results\\{testName}";
+        string dirPath = $"{Program.ROOT_REPORT_PATH}\\Results\\{testName}";
         Directory.CreateDirectory(dirPath);
         File.WriteAllText($"{dirPath}\\{testName}_{TEST_NUMBER}.json", System.Text.Json.JsonSerializer.Serialize(dataList));
     }

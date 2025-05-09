@@ -3,13 +3,15 @@ using System.Text.Json;
 
 public class Program
 {
+    public const string ROOT_REPORT_PATH = "F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results";
+
     public static async Task Main(string[] args)
     {
-        string testCase = args[0];
-        string testNumber = args[1];
+        // string testCase = args[0];
+        // string testNumber = args[1];
 
-        // string testCase = "MemoryPack_Redis";
-        // string testNumber = "7";
+        string testCase = "BSON_MongoDB";
+        string testNumber = "7";
 
         if(string.IsNullOrEmpty(testCase))
             return;
@@ -60,10 +62,10 @@ public class Program
     {
         string testName = tcFactory.Invoke().GetType().Name;
 
-        string analyticsPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Analytics\\{testName}";
+        string analyticsPath = $"{Program.ROOT_REPORT_PATH}\\Analytics\\{testName}";
         Directory.CreateDirectory(analyticsPath);
 
-        string resultPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Results\\{testName}";
+        string resultPath = $"{Program.ROOT_REPORT_PATH}\\Results\\{testName}";
         string[] resultFilePaths = Directory.GetFiles(resultPath);
 
         List<AnalyzedData> analyzedDataList = new List<AnalyzedData>();
@@ -84,14 +86,14 @@ public class Program
     {
         string testName = tcFactory.Invoke().GetType().Name;
         
-        string analyticsPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Analytics\\{testName}";
+        string analyticsPath = $"{Program.ROOT_REPORT_PATH}\\Analytics\\{testName}";
         string[] analyticsFilePaths = Directory.GetFiles(analyticsPath);
         
         StringBuilder sb = new StringBuilder();
         foreach(string filePath in analyticsFilePaths)
             sb.AppendLine($"{Path.GetFileNameWithoutExtension(filePath)} : {ReportConverter.JSON2CSV(File.ReadAllText(filePath))}");
 
-        string reportPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Report";
+        string reportPath = $"{Program.ROOT_REPORT_PATH}\\Report";
         Directory.CreateDirectory(reportPath);
         File.WriteAllText($"{reportPath}\\{testName}_report.txt", sb.ToString());
     }

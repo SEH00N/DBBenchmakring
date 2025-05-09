@@ -26,6 +26,7 @@ public abstract class TestCase
                 throw new Exception("No GC Region을 시작할 수 없습니다.");
 
             try {
+
                 if(testType == ETestType.Read)
                 {
                     await Read();
@@ -43,6 +44,9 @@ public abstract class TestCase
                     await Serialize();
                     await Write();
                 }
+            }
+            catch(Exception err) {
+                Console.WriteLine(err);
             }
             finally {
                 GC.EndNoGCRegion();
