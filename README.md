@@ -183,7 +183,7 @@ public partial class TestData
 
 ### Detail
 
-[For Full Detail](./Report/Report.xlsx)
+[For Full Detail](https://github.com/SEH00N/DBBenchmarking/raw/refs/heads/main/Report/Report.xlsx)
 
 #### JSON/Redis
 ![](./Report/Statistics/JSON_Redis_0.png)
