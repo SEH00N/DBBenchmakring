@@ -93,7 +93,8 @@ public partial class TestData
  1. 직렬화 / 역직렬화 오버헤드
  2. 직렬화 / 역직렬화 GC Alloc
  3. Read / Write 속도
- 4. 데이터 트래픽 (직렬화된 데이터 크기)
+ 4. Read / Write GC Alloc
+ 5. 데이터 트래픽 (직렬화된 데이터 크기)
 
 <br/>
 
