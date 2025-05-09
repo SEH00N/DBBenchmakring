@@ -183,6 +183,8 @@ public partial class TestData
 
 ### Detail
 
+[For Full Detail](./Report/Report.xlsx)
+
 #### JSON/Redis
 ![](./Report/Statistics/JSON_Redis_0.png)
 
