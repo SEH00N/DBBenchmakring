@@ -1,19 +1,39 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 
 public class Program
 {
     public static async Task Main(string[] args)
     {
-        Func<TestCase> tcFactory = () => {
-            return new JSON_Redis();
-            // return new MemoryPack_Redis();
-            // return new JSON_MySQL();
-            // return new MemoryPack_MySQL();
-            // return new BSON_MongoDB();
+        string testCase = args[0];
+        string testNumber = args[1];
+
+        // string testCase = "MemoryPack_Redis";
+        // string testNumber = "7";
+
+        if(string.IsNullOrEmpty(testCase))
+            return;
+
+        if(string.IsNullOrEmpty(testNumber))
+            return;
+            
+        Func<TestCase> tcFactory = testCase switch {
+            "JSON_Redis" => () => new JSON_Redis(),
+            "MemoryPack_Redis" => () => new MemoryPack_Redis(),
+            "JSON_MySQL" => () => new JSON_MySQL(),
+            "MemoryPack_MySQL" => () => new MemoryPack_MySQL(),
+            "BSON_MongoDB" => () => new BSON_MongoDB(),
+            _ => null
         };
+
+        if (tcFactory == null)
+            return;
+
+        Statistics.TEST_NUMBER = testNumber;
 
         await DBBenchmarking(tcFactory);
         AnalyzeBenchmarkingResult(tcFactory);
+        ExportReport(tcFactory);
     }
 
     // #######################################################################################
@@ -40,10 +60,10 @@ public class Program
     {
         string testName = tcFactory.Invoke().GetType().Name;
 
-        string analyticsPath = $"F:\\Lab\\DBBenchmarkTest\\Analytics\\{testName}";
+        string analyticsPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Analytics\\{testName}";
         Directory.CreateDirectory(analyticsPath);
 
-        string resultPath = $"F:\\Lab\\DBBenchmarkTest\\Results\\{testName}";
+        string resultPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Results\\{testName}";
         string[] resultFilePaths = Directory.GetFiles(resultPath);
 
         List<AnalyzedData> analyzedDataList = new List<AnalyzedData>();
@@ -55,6 +75,24 @@ public class Program
         }
 
         AnalyzedData totalAnalyzedData = Analytics.AnalyzeTotalTest(analyzedDataList);
-        File.WriteAllText($"{analyticsPath}\\_report.json", JsonSerializer.Serialize(totalAnalyzedData));
+        File.WriteAllText($"{analyticsPath}\\average.json", JsonSerializer.Serialize(totalAnalyzedData));
+    }
+
+    // #######################################################################################
+
+    private static void ExportReport(Func<TestCase> tcFactory)
+    {
+        string testName = tcFactory.Invoke().GetType().Name;
+        
+        string analyticsPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Analytics\\{testName}";
+        string[] analyticsFilePaths = Directory.GetFiles(analyticsPath);
+        
+        StringBuilder sb = new StringBuilder();
+        foreach(string filePath in analyticsFilePaths)
+            sb.AppendLine($"{Path.GetFileNameWithoutExtension(filePath)} : {ReportConverter.JSON2CSV(File.ReadAllText(filePath))}");
+
+        string reportPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Report";
+        Directory.CreateDirectory(reportPath);
+        File.WriteAllText($"{reportPath}\\{testName}_report.txt", sb.ToString());
     }
 }

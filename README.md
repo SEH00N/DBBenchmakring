@@ -114,7 +114,8 @@ public partial class TestData
  - Lock과 Transaction등의 예외처리는 본 테스트에선 고려하지 않는다.
  - DB의 테이블은 미리 구성한 상태로 테스트를 진행한다.
  - 모든 데이터는 key=value 의 형식으로 저장한다.
- - 버퍼 초기화를 위해 5회의 모의 Write/Read를 진행한 후 실제 테스트를 진행한다.
+ - 시스템 Warmup을 위해 1회의 모의 테스트를 진행한 후 본 테스트를 진행한다.
+ - 버퍼 초기화를 위해 5회의 모의 Write/Read를 진행한 후 본 테스트를 진행한다.
 
 <br/>
 
@@ -133,5 +134,62 @@ public partial class TestData
 |                           |GC Alloc Min               |                           |
 |                           |GC Alloc Max               |                           |
 |                           |Throughput req/s           |                           |
+
+<br/>
+
+## 벤치마크 결과
+
+|JSON/Redis                           |MemoryPack/Redis                           |JSON/MySQL                           |MemoryPack/MySQL                           |BSON/MongoDB                           |
+|:-:                                  |:-:                                        |:-:                                  |:-:                                        |:-:                                    |
+|![](.\Report\Colors\JSON_Redis.png)  |![](.\Report\Colors\MemoryPack_Redis.png)  |![](.\Report\Colors\JSON_MySQL.png)  |![](.\Report\Colors\MemoryPack_MySQL.png)  |![](.\Report\Colors\BSON_MongoDB.png)  |
+
+### Processing Time (avg)
+|Serailize(ms)                                                                  |Deserialize(ms)                                                                |
+|:-:                                                                            |:-:                                                                            |
+|<img src=".\Report\Charts\Performance_Serialize.png" style="width: 400px;"/>   |<img src=".\Report\Charts\Performance_Deserialize.png" style="width: 400px;"/> |
+
+|Write(ms)                                                                      |Read(ms)                                                                       |
+|:-:                                                                            |:-:                                                                            |
+|<img src=".\Report\Charts\Performance_Write.png" style="width: 400px;"/>       |<img src=".\Report\Charts\Performance_Read.png" style="width: 400px;"/>        |
+
+|Total(s)                                                                       |
+|:-:                                                                            |
+|<img src=".\Report\Charts\Performance_Total.png" style="width: 400px;"/>       |
+
+---
+
+### GC Alloc (avg)
+|Serailize(mb)                                                                  |Deserialize(mb)                                                                |
+|:-:                                                                            |:-:                                                                            |
+|<img src=".\Report\Charts\GCAlloc_Serialize.png" style="width: 400px;"/>       |<img src=".\Report\Charts\GCAlloc_Deserialize.png" style="width: 400px;"/>     |
+
+|Write(mb)                                                                      |Read(mb)                                                                       |
+|:-:                                                                            |:-:                                                                            |
+|<img src=".\Report\Charts\GCAlloc_Write.png" style="width: 400px;"/>           |<img src=".\Report\Charts\GCAlloc_Read.png" style="width: 400px;"/>            |
+
+|Total(gb)                                                                      |
+|:-:                                                                            |
+|<img src=".\Report\Charts\GCAlloc_Total.png" style="width: 400px;"/>           |
+
+---
+
+### Throughput (req/s)
+|Write                                                                          |Read                                                                           |
+|:-:                                                                            |:-:                                                                            |
+|<img src=".\Report\Charts\Throughput_Write.png" style="width: 400px;"/>        |<img src=".\Report\Charts\Throughput_Read.png" style="width: 400px;"/>         |
+
+---
+
+### Detail
+
+[JSON/Redis](.\Report\Statistics\JSON_Redis.png)
+
+[MemoryPack/Redis](.\Report\Statistics\MemoryPack_Redis.png)
+
+[JSON/MySQL](.\Report\Statistics\JSON_MySQL.png)
+
+[MemoryPack/MySQL](.\Report\Statistics\MemoryPack_MySQL.png)
+
+[BSON/MongoDB](.\Report\Statistics\BSON_MongoDB.png)
 
 </div>

@@ -1,0 +1,6 @@
+.\TestScript\RestartServiceAndRunTest.ps1 -TestCase "JSON_Redis" -TestNumber "1"
+.\TestScript\RestartServiceAndRunTest.ps1 -TestCase "JSON_Redis" -TestNumber "1"
+.\TestScript\RestartServiceAndRunTest.ps1 -TestCase "JSON_Redis" -TestNumber "2"
+.\TestScript\RestartServiceAndRunTest.ps1 -TestCase "JSON_Redis" -TestNumber "3"
+.\TestScript\RestartServiceAndRunTest.ps1 -TestCase "JSON_Redis" -TestNumber "4"
+.\TestScript\RestartServiceAndRunTest.ps1 -TestCase "JSON_Redis" -TestNumber "5"

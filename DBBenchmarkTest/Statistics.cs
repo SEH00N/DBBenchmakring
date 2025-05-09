@@ -2,7 +2,7 @@ using System.Diagnostics;
 
 public static class Statistics
 {
-    private const int TEST_COUNT = 2;
+    public static string TEST_NUMBER = "0";
     // private static int log_counter = 0;
 
     private static Stopwatch stopwatch = null;
@@ -21,9 +21,9 @@ public static class Statistics
     {
         stopwatch.Stop();
         
-        string dirPath = $"F:\\Lab\\DBBenchmarkTest\\Results\\{testName}";
+        string dirPath = $"F:\\Lab\\DBBenchmarking\\DBBenchmarkTest\\Results\\Results\\{testName}";
         Directory.CreateDirectory(dirPath);
-        File.WriteAllText($"{dirPath}\\{testName}_{TEST_COUNT}.json", System.Text.Json.JsonSerializer.Serialize(dataList));
+        File.WriteAllText($"{dirPath}\\{testName}_{TEST_NUMBER}.json", System.Text.Json.JsonSerializer.Serialize(dataList));
     }
 
     public static void Record(EStatisticsActionType actionType)

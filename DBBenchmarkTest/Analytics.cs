@@ -5,9 +5,12 @@ public static class Analytics
         Analyze analyze = new Analyze(testResultList);
         AnalyzedData analyzedData = new AnalyzedData();
 
-        analyzedData.TotalTime = analyze.SerializeTimeList.Sum() + analyze.DeserializeTimeList.Sum() + analyze.WriteTimeList.Sum() + analyze.ReadTimeList.Sum();
+        double writeTotalTime = analyze.WriteTimeList.Sum();
+        double readTotalTime = analyze.ReadTimeList.Sum();
+
+        analyzedData.TotalTime = analyze.SerializeTimeList.Sum() + analyze.DeserializeTimeList.Sum() + writeTotalTime + readTotalTime;
         analyzedData.TotalGCAlloc = analyze.SerializeGCAllocList.Sum() + analyze.DeserializeGCAllocList.Sum() + analyze.WriteGCAllocList.Sum() + analyze.ReadGCAllocList.Sum();
-        analyzedData.SerializedDataSize = serializedDataSize;
+        analyzedData.SerializedDataSize = serializedDataSize / 1024;
 
         analyzedData.SerializeProcessingTimeAverage = analyze.SerializeTimeList.Average();
         analyzedData.SerializeProcessingTimeMin = analyze.SerializeTimeList.Min();
@@ -45,8 +48,8 @@ public static class Analytics
         analyzedData.ReadGCAllocMin = analyze.ReadGCAllocList.Min();
         analyzedData.ReadGCAllocMax = analyze.ReadGCAllocList.Max();
 
-        analyzedData.WriteThroughputPerSecond = analyze.WriteTimeList.Count / analyzedData.TotalTime;
-        analyzedData.ReadThroughputPerSecond = analyze.ReadTimeList.Count / analyzedData.TotalTime;
+        analyzedData.WriteThroughputPerSecond = analyze.WriteTimeList.Count / writeTotalTime * 1000;
+        analyzedData.ReadThroughputPerSecond = analyze.ReadTimeList.Count / readTotalTime * 1000;
 
         return analyzedData;
     }
