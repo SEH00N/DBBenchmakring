@@ -9,8 +9,8 @@ public class Program
     {
         // string testCase = args[0];
         // string testNumber = args[1];
-
-        string testCase = "BSON_MongoDB";
+foreach(string tc in new string[] { "JSON_Redis", "MemoryPack_Redis", "JSON_MySQL", "MemoryPack_MySQL", "BSON_MongoDB" }) {
+        string testCase = tc;
         string testNumber = "7";
 
         if(string.IsNullOrEmpty(testCase))
@@ -18,7 +18,7 @@ public class Program
 
         if(string.IsNullOrEmpty(testNumber))
             return;
-            
+
         Func<TestCase> tcFactory = testCase switch {
             "JSON_Redis" => () => new JSON_Redis(),
             "MemoryPack_Redis" => () => new MemoryPack_Redis(),
@@ -33,9 +33,11 @@ public class Program
 
         Statistics.TEST_NUMBER = testNumber;
 
-        await DBBenchmarking(tcFactory);
-        AnalyzeBenchmarkingResult(tcFactory);
-        ExportReport(tcFactory);
+        // await DBBenchmarking(tcFactory);
+        // AnalyzeBenchmarkingResult(tcFactory);
+        ExportCSVReport(tcFactory);
+        ExportHTMLReport(tcFactory);
+}
     }
 
     // #######################################################################################
@@ -82,7 +84,7 @@ public class Program
 
     // #######################################################################################
 
-    private static void ExportReport(Func<TestCase> tcFactory)
+    private static void ExportCSVReport(Func<TestCase> tcFactory)
     {
         string testName = tcFactory.Invoke().GetType().Name;
         
@@ -96,5 +98,24 @@ public class Program
         string reportPath = $"{Program.ROOT_REPORT_PATH}\\Report";
         Directory.CreateDirectory(reportPath);
         File.WriteAllText($"{reportPath}\\{testName}_report.txt", sb.ToString());
+    }
+
+    private static void ExportHTMLReport(Func<TestCase> tcFactory)
+    {
+        string testName = tcFactory.Invoke().GetType().Name;
+        
+        string analyticsPath = $"{Program.ROOT_REPORT_PATH}\\Analytics\\{testName}";
+        string[] analyticsFilePaths = Directory.GetFiles(analyticsPath);
+        List<string> jsonList = new List<string>();
+        foreach(string filePath in analyticsFilePaths)
+            jsonList.Add(File.ReadAllText(filePath));
+        
+        string average = jsonList[0];
+        jsonList.RemoveAt(0);
+        jsonList.Add(average);
+
+        string reportPath = $"{Program.ROOT_REPORT_PATH}\\HTMLReport";
+        Directory.CreateDirectory(reportPath);
+        File.WriteAllText($"{reportPath}\\{testName}_report.html", ReportConverter.JSON2HTMLTable(jsonList));
     }
 }
